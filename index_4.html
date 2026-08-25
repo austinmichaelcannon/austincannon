@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Austin Cannon / Program Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Public+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --base:#0E1419;
+  --surface:#161E25;
+  --raised:#1D272F;
+  --line:#26333D;
+  --text:#E4EAEF;
+  --muted:#7D8F9C;
+  --locate:#FF6B1A;
+  --fiber:#4DD8C4;
+  --maxw:1080px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--base);
+  color:var(--text);
+  font-family:'Public Sans',system-ui,sans-serif;
+  font-weight:300;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ---------- type roles ---------- */
+.display{
+  font-family:'Archivo',system-ui,sans-serif;
+  font-variation-settings:'wdth' 112,'wght' 800;
+  letter-spacing:-0.02em;
+  line-height:1.02;
+  text-transform:uppercase;
+}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--locate);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+}
+.eyebrow::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--line);
+}
+
+h2.sec{
+  font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 108,'wght' 700;
+  font-size:clamp(26px,3.6vw,40px);
+  letter-spacing:-0.02em;
+  line-height:1.08;
+  margin-bottom:14px;
+}
+h3.sub{
+  font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 100,'wght' 650;
+  font-size:17px;
+  letter-spacing:-0.01em;
+  margin-bottom:6px;
+}
+p.lede{
+  font-size:clamp(17px,1.9vw,20px);
+  color:#C3CED6;
+  max-width:62ch;
+  font-weight:300;
+}
+p.body{max-width:66ch;color:#B4C0C9}
+.dim{color:var(--muted)}
+
+/* ---------- shell ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+header.top{
+  position:sticky;top:0;z-index:60;
+  background:rgba(14,20,25,.86);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topinner{
+  max-width:var(--maxw);margin:0 auto;padding:0 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;min-height:62px;flex-wrap:wrap;
+}
+.brandmark{
+  display:flex;align-items:center;gap:11px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text);
+}
+.brandmark .dotmark{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--locate);
+  box-shadow:0 0 0 4px rgba(255,107,26,.16);
+  flex:none;
+}
+nav.pages{display:flex;gap:2px;flex-wrap:wrap}
+nav.pages button{
+  background:none;border:0;cursor:pointer;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);
+  padding:9px 12px;border-radius:3px;
+  transition:color .18s ease,background .18s ease;
+}
+nav.pages button:hover{color:var(--text);background:var(--surface)}
+nav.pages button[aria-current="true"]{color:var(--base);background:var(--locate);font-weight:600}
+nav.pages button:focus-visible{outline:2px solid var(--fiber);outline-offset:2px}
+
+.page{display:none;padding:64px 0 96px}
+.page.on{display:block;animation:rise .38s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:12px 0 4px}
+.hero .name{
+  font-size:clamp(46px,9.2vw,104px);
+  margin:6px 0 22px;
+}
+.hero .name .last{color:var(--locate)}
+.role{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* fiber spine */
+.spine{margin:38px 0 0;position:relative}
+.spine svg{width:100%;height:34px;display:block;overflow:visible}
+.route{fill:none;stroke:var(--fiber);stroke-width:1.6;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 1.5s ease .15s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.metrics{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  margin-top:2px;background:var(--surface);
+}
+.metric{padding:22px 22px 20px;border-right:1px solid var(--line)}
+.metric:last-child{border-right:0}
+.metric .num{
+  font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 105,'wght' 750;
+  font-size:clamp(28px,4.2vw,42px);
+  letter-spacing:-.025em;line-height:1;
+  color:var(--locate);
+}
+.metric .lab{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin-top:11px;line-height:1.5;
+}
+
+/* ---------- generic blocks ---------- */
+.block{margin-top:64px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.card{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:4px;padding:22px 22px 24px;
+  transition:border-color .2s ease,background .2s ease;
+}
+.card:hover{border-color:#33444F;background:var(--raised)}
+.card .tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--fiber);margin-bottom:12px;display:block;
+}
+.card p{font-size:14.5px;color:#A9B6C0;line-height:1.62}
+
+.stack{
+  display:flex;flex-wrap:wrap;gap:7px;margin-top:26px;
+}
+.chip{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.06em;
+  border:1px solid var(--line);border-radius:3px;
+  padding:6px 11px;color:var(--muted);background:var(--surface);
+}
+
+.callout{
+  border-left:2px solid var(--locate);
+  padding:4px 0 4px 20px;margin-top:30px;
+  max-width:68ch;
+}
+.callout p{font-size:15.5px;color:#C3CED6}
+
+/* ---------- map ---------- */
+.mapshell{
+  margin-top:28px;
+  display:grid;grid-template-columns:1.55fr 1fr;gap:14px;
+}
+.mapbox{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:4px;padding:14px;position:relative;
+}
+.mapbox svg{width:100%;height:auto;display:block}
+.gridline{stroke:var(--line);stroke-width:.6}
+.fiberline{fill:none;stroke:var(--fiber);stroke-width:1.7;opacity:.85}
+.fiberglow{fill:none;stroke:var(--fiber);stroke-width:7;opacity:.07}
+.tether{stroke:var(--line);stroke-width:.8;stroke-dasharray:2 3}
+.node{cursor:pointer}
+.node circle.hit{fill:transparent}
+.node .core{transition:r .18s ease,fill .18s ease}
+.node:hover .core{r:8}
+.node:focus-visible{outline:none}
+.node:focus-visible .core{stroke:var(--text);stroke-width:2}
+.node.sel .core{stroke:var(--text);stroke-width:2}
+.maplabel{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:8.5px;letter-spacing:.06em;fill:var(--muted);
+  pointer-events:none;
+}
+.legend{
+  display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+.panel{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:4px;padding:20px;display:flex;flex-direction:column;
+}
+.panel .pname{
+  font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 100,'wght' 700;
+  font-size:18px;letter-spacing:-.01em;line-height:1.2;
+}
+.panel .pmeta{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:7px;
+}
+.scorebig{
+  font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 105,'wght' 780;
+  font-size:56px;line-height:1;letter-spacing:-.03em;
+  color:var(--locate);margin:20px 0 2px;
+}
+.tierlab{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.bars{margin-top:22px;display:flex;flex-direction:column;gap:13px}
+.bar .brow{
+  display:flex;justify-content:space-between;
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.06em;color:var(--muted);margin-bottom:6px;
+}
+.bar .track{height:4px;background:#22303A;border-radius:2px;overflow:hidden}
+.bar .fill{height:100%;background:var(--locate);border-radius:2px;transition:width .45s cubic-bezier(.4,0,.2,1)}
+.bar.f .fill{background:var(--fiber)}
+.hint{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  color:var(--muted);letter-spacing:.06em;margin-top:auto;padding-top:20px;
+}
+
+/* ---------- table ---------- */
+.tablewrap{
+  margin-top:26px;border:1px solid var(--line);border-radius:4px;
+  overflow-x:auto;background:var(--surface);
+}
+table{width:100%;border-collapse:collapse;min-width:620px}
+th{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);text-align:left;font-weight:500;
+  padding:13px 16px;border-bottom:1px solid var(--line);
+  background:#131B21;
+}
+td{
+  padding:13px 16px;font-size:14px;color:#B4C0C9;
+  border-bottom:1px solid rgba(38,51,61,.6);
+}
+tr:last-child td{border-bottom:0}
+td.m{font-family:'IBM Plex Mono',monospace;font-size:12.5px}
+.pill{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;
+  letter-spacing:.09em;text-transform:uppercase;
+  padding:3px 8px;border-radius:2px;border:1px solid var(--line);
+  color:var(--muted);white-space:nowrap;
+}
+.pill.live{color:var(--fiber);border-color:rgba(77,216,196,.35)}
+.pill.hot{color:var(--locate);border-color:rgba(255,107,26,.35)}
+
+/* ---------- timeline ---------- */
+.tl{margin-top:30px;border-left:1px solid var(--line);padding-left:0}
+.job{position:relative;padding:0 0 38px 30px}
+.job::before{
+  content:"";position:absolute;left:-4.5px;top:7px;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--base);border:1.5px solid var(--muted);
+}
+.job.now::before{background:var(--locate);border-color:var(--locate);box-shadow:0 0 0 4px rgba(255,107,26,.14)}
+.job .when{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+}
+.job .what{
+  font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 102,'wght' 680;
+  font-size:19px;letter-spacing:-.01em;margin:5px 0 3px;
+}
+.job .where{font-size:13.5px;color:var(--fiber);font-family:'IBM Plex Mono',monospace;letter-spacing:.04em}
+.job ul{margin:12px 0 0;padding-left:16px;max-width:70ch}
+.job li{font-size:14.5px;color:#A9B6C0;margin-bottom:7px;line-height:1.6}
+.job li::marker{color:var(--line)}
+
+/* ---------- argo ---------- */
+.thesis{
+  border:1px solid var(--line);border-radius:4px;
+  background:linear-gradient(180deg,#18222A 0%,var(--surface) 100%);
+  padding:30px;margin-top:26px;
+}
+.thesis .q{
+  font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 106,'wght' 680;
+  font-size:clamp(19px,2.5vw,25px);letter-spacing:-.02em;
+  line-height:1.3;max-width:26ch;
+}
+.mathrow{
+  display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;
+}
+.mathcell{
+  flex:1;min-width:130px;background:var(--base);
+  border:1px solid var(--line);border-radius:3px;padding:15px;
+}
+.mathcell .v{
+  font-family:'IBM Plex Mono',monospace;font-size:19px;
+  font-weight:600;color:var(--fiber);letter-spacing:-.01em;
+}
+.mathcell .k{
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px;
+}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:34px 0 60px;margin-top:20px}
+.foot{
+  max-width:var(--maxw);margin:0 auto;padding:0 28px;
+  display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end;
+}
+.foot a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--locate);padding-bottom:1px}
+.foot a:hover{color:var(--locate)}
+.foot .lines{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;
+  letter-spacing:.04em;line-height:2.1;
+}
+.foot .edu{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;line-height:1.9;
+}
+
+/* ---------- responsive ---------- */
+@media(max-width:880px){
+  .mapshell{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .metrics{grid-template-columns:1fr}
+  .metric{border-right:0;border-bottom:1px solid var(--line)}
+  .metric:last-child{border-bottom:0}
+  .topinner{min-height:0;padding-top:12px;padding-bottom:12px}
+  .page{padding:44px 0 70px}
+  .foot{flex-direction:column;align-items:flex-start}
+  .foot .edu{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .route{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topinner">
+    <div class="brandmark"><span class="dotmark"></span> Austin Cannon</div>
+    <nav class="pages" id="nav">
+      <button data-p="overview" aria-current="true">Overview</button>
+      <button data-p="systems">Vendor Replacement</button>
+      <button data-p="field">Field Model</button>
+      <button data-p="record">Record</button>
+      <button data-p="questions">Fit</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="page on" id="overview">
+  <div class="wrap">
+    <div class="hero">
+      <div class="role">Program Manager, Operations &nbsp;/&nbsp; Wire 3 &nbsp;/&nbsp; Central Florida</div>
+      <h1 class="display name">Austin<br><span class="last">Cannon</span></h1>
+      <p class="lede">I figure out what a system needs to do, get the right people building it, and stay on it until it works for the people using it. At Wire 3 that has meant working with our C-suite and engineers to take more than $50,000 a month of vendor spend in house.</p>
+
+      <div class="spine">
+        <svg viewBox="0 0 1000 34" preserveAspectRatio="none" aria-hidden="true">
+          <path class="route" d="M0,26 L180,26 L240,10 L520,10 L580,24 L1000,24"/>
+        </svg>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <div class="num">$600K+</div>
+          <div class="lab">Annual vendor spend<br>replaced with internal builds</div>
+        </div>
+        <div class="metric">
+          <div class="num">700%+</div>
+          <div class="lab">SMB install growth<br>6 to 50+ per month</div>
+        </div>
+        <div class="metric">
+          <div class="num">40&ndash;50</div>
+          <div class="lab">Projects delivered per year<br>$5K to $250K each</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="eyebrow">What I actually do</div>
+      <h2 class="sec">Two years inside a startup that had to build everything</h2>
+      <p class="body">Wire 3 is a fiber ISP building out Central Florida. When I joined in March 2024 the operational layer was vendors, spreadsheets, and whoever remembered the context. I report to the C-suite and investors, I sit between the SMB team, the community team, and construction, and I own the queue that decides what any of them work on.</p>
+      <p class="body" style="margin-top:14px">Most of what follows started with a vendor we were overpaying for a tool that never fit how a fiber ISP runs. I scoped the replacement, worked it through with our C-suite and engineers, and stayed on it until it shipped.</p>
+
+      <div class="grid2">
+        <div class="card">
+          <span class="tag">Cost</span>
+          <h3 class="sub">Vendor replacement</h3>
+          <p>Ran the program that took six vendor tools in house: sales CRM, IVR routing, construction hub, vendor management, analytics, ticketing.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Revenue</span>
+          <h3 class="sub">Field prioritization</h3>
+          <p>A lead scoring model built on business size, density, and fiber proximity that took monthly installs from 6 to more than 50.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Deal flow</span>
+          <h3 class="sub">Community and bulk</h3>
+          <p>Bulk service proposals and ROE agreements for HOAs and MDUs, from first proposal through contract execution and 90-day penetration.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Reporting</span>
+          <h3 class="sub">Executive visibility</h3>
+          <p>Weekly KPI reporting to the C-suite and investors across pipeline health, penetration, and team performance in every active market.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SYSTEMS ============ -->
+<section class="page" id="systems">
+  <div class="wrap">
+    <div class="eyebrow">Wire 3 HQ</div>
+    <h2 class="sec">Six vendors taken in house</h2>
+    <p class="lede">We were paying outside vendors more than $50,000 a month for tooling that never quite fit a fiber ISP. I ran the program that replaced them.</p>
+
+    <div class="callout">
+      <p>To be clear about my role. I am not an engineer and I did not build these. My job was figuring out what each system had to do, writing the spec, working it through with our C-suite, handing requirements to our engineering team, and staying on it through rollout until the people using it stopped working around it.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <span class="tag">01 &nbsp;Sales</span>
+        <h3 class="sub">Internal CRM with workflows and agents</h3>
+        <p>Replaced HubSpot with a system built around how our SMB team actually sells. Agent-assisted enrichment and routing, automated stage movement, and pipeline visibility mapped to our territory model.</p>
+      </div>
+      <div class="card">
+        <span class="tag">02 &nbsp;Voice</span>
+        <h3 class="sub">IVR phone system</h3>
+        <p>Inbound call routing built in house. Calls land with the right team the first time, and when the tree needs to change we change it the same day.</p>
+      </div>
+      <div class="card">
+        <span class="tag">03 &nbsp;Construction</span>
+        <h3 class="sub">Construction hub</h3>
+        <p>Build tracking across active markets. Where a property sits in design, permitting, construction, and live status, in one place the construction team and the sales team read the same way.</p>
+      </div>
+      <div class="card">
+        <span class="tag">04 &nbsp;Vendors</span>
+        <h3 class="sub">Vendor management and campaigns</h3>
+        <p>We create campaigns and assign them out to vendors through the system, then track what came back. Vendor performance is measurable now.</p>
+      </div>
+      <div class="card">
+        <span class="tag">05 &nbsp;Analytics</span>
+        <h3 class="sub">Reporting layer</h3>
+        <p>Feeds the weekly KPI package that goes to the C-suite and investors. Pipeline health, penetration rates, and team performance pull automatically. Monday mornings used to be a rebuild by hand.</p>
+      </div>
+      <div class="card">
+        <span class="tag">06 &nbsp;Support</span>
+        <h3 class="sub">Internal ticketing</h3>
+        <p>Issue intake and routing for field and internal teams. Field problems get logged, assigned, and closed instead of living in a Teams chat.</p>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top:34px;margin-bottom:14px">What it runs on</div>
+    <div class="stack">
+      <span class="chip">Zapier</span>
+      <span class="chip">Direct API calls</span>
+      <span class="chip">Notion</span>
+      <span class="chip">HubSpot</span>
+      <span class="chip">Vetro</span>
+      <span class="chip">KMZ / GIS</span>
+      <span class="chip">Google Sheets</span>
+      <span class="chip">Claude</span>
+    </div>
+
+    <div class="block">
+      <div class="eyebrow">Project tracker</div>
+      <h2 class="sec">What the operating view looks like</h2>
+      <p class="body">The tracking system consolidated bulk deal management, ROE status, and 90-day penetration into one filtered view. Below is a rebuild of that structure using sample data.</p>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>Property</th><th>Type</th><th>Units</th><th>Stage</th><th>ROE</th><th>90-day pen.</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Hawthorne Ridge</td><td>MDU</td><td class="m">248</td><td><span class="pill">Construction</span></td><td class="m dim">Executed</td><td class="m">31%</td></tr>
+            <tr><td>Palmetto Commons</td><td>HOA bulk</td><td class="m">412</td><td><span class="pill hot">Marketing</span></td><td class="m dim">Executed</td><td class="m">44%</td></tr>
+            <tr><td>Sable Point</td><td>MDU</td><td class="m">96</td><td><span class="pill">Negotiation</span></td><td class="m dim">In redline</td><td class="m dim">&mdash;</td></tr>
+            <tr><td>Grove Landing</td><td>HOA bulk</td><td class="m">180</td><td><span class="pill live">Live</span></td><td class="m dim">Executed</td><td class="m">58%</td></tr>
+            <tr><td>Kestrel Park</td><td>MDU</td><td class="m">320</td><td><span class="pill">Design</span></td><td class="m dim">Pending</td><td class="m dim">&mdash;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="body dim" style="margin-top:14px;font-size:13px">Sample data. No Wire 3 customer, property, or contract information appears anywhere on this page.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIELD MODEL ============ -->
+<section class="page" id="field">
+  <div class="wrap">
+    <div class="eyebrow">Lead scoring model</div>
+    <h2 class="sec">Six installs a month to more than fifty</h2>
+    <p class="lede">Field reps were working territory by instinct. I built a scoring model with Claude that ranked every business in a market on the things that actually predicted a close, then turned the output into routed lists reps could run.</p>
+
+    <div class="callout">
+      <p>Proximity to existing fiber mattered more than anything else, because it drove both install cost and speed to live. A large account 2,000 feet off the route was worth less than a smaller one sitting 200 feet away. Once the model weighted for that, the same reps in the same territory started closing an order of magnitude more.</p>
+    </div>
+
+    <div class="mapshell">
+      <div class="mapbox">
+        <svg viewBox="0 0 800 450" role="img" aria-label="Interactive territory map showing scored business prospects relative to an existing fiber route">
+          <defs></defs>
+          <g aria-hidden="true">
+            <line class="gridline" x1="0" y1="90" x2="800" y2="90"/>
+            <line class="gridline" x1="0" y1="180" x2="800" y2="180"/>
+            <line class="gridline" x1="0" y1="270" x2="800" y2="270"/>
+            <line class="gridline" x1="0" y1="360" x2="800" y2="360"/>
+            <line class="gridline" x1="160" y1="0" x2="160" y2="450"/>
+            <line class="gridline" x1="320" y1="0" x2="320" y2="450"/>
+            <line class="gridline" x1="480" y1="0" x2="480" y2="450"/>
+            <line class="gridline" x1="640" y1="0" x2="640" y2="450"/>
+          </g>
+          <path class="fiberglow" d="M20,390 L190,352 L330,262 L470,240 L600,152 L780,118"/>
+          <path class="fiberline" d="M20,390 L190,352 L330,262 L470,240 L600,152 L780,118"/>
+          <text class="maplabel" x="24" y="412">EXISTING FIBER ROUTE</text>
+          <g id="nodes"></g>
+        </svg>
+        <div class="legend">
+          <span><i style="background:var(--fiber)"></i>Fiber route</span>
+          <span><i style="background:var(--locate)"></i>Tier A &nbsp;75+</span>
+          <span><i style="background:transparent;border:1.5px solid var(--locate)"></i>Tier B &nbsp;55&ndash;74</span>
+          <span><i style="background:transparent;border:1.5px solid #4A5A66"></i>Tier C &nbsp;under 55</span>
+        </div>
+      </div>
+
+      <div class="panel" id="panel">
+        <div class="pname" id="pname">Ridgeline Dental Partners</div>
+        <div class="pmeta" id="pmeta">Healthcare &nbsp;/&nbsp; 14 seats</div>
+        <div class="scorebig" id="pscore">91</div>
+        <div class="tierlab" id="ptier">Tier A &nbsp;&middot;&nbsp; route first</div>
+        <div class="bars">
+          <div class="bar f">
+            <div class="brow"><span>Fiber proximity</span><span id="v1">33 / 35</span></div>
+            <div class="track"><div class="fill" id="b1" style="width:94%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="brow"><span>Business size</span><span id="v2">26 / 30</span></div>
+            <div class="track"><div class="fill" id="b2" style="width:87%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="brow"><span>Area density</span><span id="v3">23 / 25</span></div>
+            <div class="track"><div class="fill" id="b3" style="width:92%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="brow"><span>Bandwidth need</span><span id="v4">9 / 10</span></div>
+            <div class="track"><div class="fill" id="b4" style="width:90%"></div></div>
+          </div>
+        </div>
+        <div class="hint">Select any node on the map</div>
+      </div>
+    </div>
+
+    <p class="body dim" style="margin-top:16px;font-size:13px">Sample businesses and coordinates. The scoring weights shown reflect the real model structure.</p>
+
+    <div class="block">
+      <div class="eyebrow">What it changed</div>
+      <h2 class="sec">From a list to a route</h2>
+      <p class="body">Scoring alone does not move volume. The output had to become something a rep could execute against on a Tuesday morning, so I built optimized territory routes on top of it using KMZ mapping and Vetro. Reps got a sequence to work through. That is where the 700% came from.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECORD ============ -->
+<section class="page" id="record">
+  <div class="wrap">
+    <div class="eyebrow">Track record</div>
+    <h2 class="sec">Six years of startups and agencies</h2>
+    <p class="lede">Account management and business development before operations. Every role has been a small team where the job description stopped mattering around week three.</p>
+
+    <div class="tl">
+      <div class="job now">
+        <div class="when">March 2024 &ndash; Present</div>
+        <div class="what">Program Manager, Operations</div>
+        <div class="where">Wire 3 &nbsp;&middot;&nbsp; Orlando, FL</div>
+        <ul>
+          <li>Scoped and specced six internal systems with our C-suite and engineering team, building a share of the workflows myself. Replaced more than $50,000 a month in vendor spend, including HubSpot.</li>
+          <li>Built the lead scoring and prioritization model that grew SMB monthly installs from 6 to more than 50.</li>
+          <li>Run the project queue across all active programs, working with the C-suite to prioritize and directing the PM team on what to execute.</li>
+          <li>Own 10 to 20 concurrent projects valued between $5,000 and $250,000, delivering 40 to 50 per year.</li>
+          <li>Architect community partnership strategy: bulk service proposals, ROE agreements, and escalation for every community-facing program.</li>
+          <li>Negotiated and onboarded a new phone vendor, opening a revenue channel the business did not previously have.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="when">Aug 2023 &ndash; March 2024</div>
+        <div class="what">Account Manager, Business Development Lead</div>
+        <div class="where">Clutch Creative &nbsp;&middot;&nbsp; Remote</div>
+        <ul>
+          <li>Brought in 10 new clients including 2 Fortune 500 companies through cold outreach and consultative sales.</li>
+          <li>Ran a portfolio of agency accounts across creative, marketing, PR, and tech as the primary point of contact.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="when">June 2021 &ndash; July 2023</div>
+        <div class="what">Senior Account Manager, Business Development</div>
+        <div class="where">Synergy Interactive &nbsp;&middot;&nbsp; Orlando, FL</div>
+        <ul>
+          <li>First non-C-suite employee to independently close a net new client.</li>
+          <li>Closed the largest placement in company history, a CTO search at $400K base plus $250K RSU.</li>
+          <li>Worked directly with the C-suite on search strategy and client expectations for priority accounts.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="when">Feb 2020 &ndash; June 2021</div>
+        <div class="what">Account Manager</div>
+        <div class="where">180 Medical &nbsp;&middot;&nbsp; Orlando, FL</div>
+        <ul>
+          <li>Managed a national portfolio of 100+ accounts in a compliance-driven healthcare environment.</li>
+          <li>Generated more than $1M in revenue through consultative relationship building and account growth.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIT ============ -->
+<section class="page" id="questions">
+  <div class="wrap">
+    <div class="eyebrow">Exploratory</div>
+    <h2 class="sec">I do not know what the role is yet</h2>
+    <p class="lede">You asked what I would be open to and I said customer success, account management, program and operations. That spread is honest. My last six years have been a mixture of all three, and the roles where I did my best work were the ones that refused to sit in one lane.</p>
+
+    <div class="block">
+      <div class="eyebrow">How I work</div>
+      <div class="grid2">
+        <div class="card">
+          <span class="tag">01</span>
+          <h3 class="sub">I built my current role from scratch</h3>
+          <p>Wire 3 knew they had a need. They could not tell me exactly what it was. Over two years I learned the business well enough to name the gaps myself, and the job I have now is the one I built by filling them. Nobody handed me a job description.</p>
+        </div>
+        <div class="card">
+          <span class="tag">02</span>
+          <h3 class="sub">I direct teams that do not report to me</h3>
+          <p>The SMB team, the community team, and the DSR managers all take direction from me and none of them work for me. Everything I get done runs on being useful to those teams, which is the only version of this job I have ever had.</p>
+        </div>
+        <div class="card">
+          <span class="tag">03</span>
+          <h3 class="sub">I take the thing nobody owns</h3>
+          <p>Most of what I have built started as a problem sitting between two teams with no name on it. I pick those up before anyone assigns them, which is how I ended up running the project queue for the whole company.</p>
+        </div>
+        <div class="card">
+          <span class="tag">04</span>
+          <h3 class="sub">I sit on both sides of the build</h3>
+          <p>I work directly with customers, communities, and vendors, and I work directly with our engineers and C-suite. Being fluent enough on both sides means what gets built is what the client actually needed. I am not technical. I am useful to technical people.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="eyebrow">What I am after</div>
+      <h2 class="sec">Why I keep reaching out</h2>
+      <div class="thesis">
+        <div class="q">I have gotten more out of the last two years than the rest of my career combined, and the reason is that almost nothing was built yet when I got there. I want more of that.</div>
+        <p class="body" style="margin-top:20px">Fortune 500 does not move me. I have had those companies as clients and the pace is not something I want to live inside. What I am optimizing for now is proximity to people who know how to build and scale a business from nothing, close enough that some of how they do it transfers.</p>
+        <p class="body" style="margin-top:16px">I have been paying attention to what you are building for a while. That is the actual reason I keep reaching out, and it is not something I do casually.</p>
+        <p class="body" style="margin-top:16px">My background is eclectic and it has never fit cleanly into one seat. At a company of a dozen people that tends to be an asset. I want to wear as many hats as the stage calls for, move fast, build the plane while it is flying, and be worth considerably more than I cost.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="eyebrow">What I would want to know</div>
+      <h2 class="sec">Five questions</h2>
+      <p class="body">Written before I have the full picture, so some of these may have obvious answers. Correcting a bad assumption is a good use of the call either way.</p>
+
+      <div class="tl" style="margin-top:30px">
+        <div class="job">
+          <div class="when">Question 01</div>
+          <div class="what">Walk me through what Argo IQ actually does</div>
+          <p class="body" style="font-size:14.5px;color:#A9B6C0;margin-top:8px">I have read the site and I have a rough picture. I want the real version from you, including what separates the three offerings from each other and which one clients land on most.</p>
+        </div>
+        <div class="job">
+          <div class="when">Question 02</div>
+          <div class="what">Who is managing accounts right now?</div>
+          <p class="body" style="font-size:14.5px;color:#A9B6C0;margin-top:8px">And is that where the strain is, or is it somewhere further upstream.</p>
+        </div>
+        <div class="job">
+          <div class="when">Question 03</div>
+          <div class="what">What is the long game for the business?</div>
+          <p class="body" style="font-size:14.5px;color:#A9B6C0;margin-top:8px">Acquisition, scale it as far as it goes, something else entirely. The answer changes what the next two years look like for anyone joining now, and I would rather know which ride I am getting on.</p>
+        </div>
+        <div class="job">
+          <div class="when">Question 04</div>
+          <div class="what">What does doing this job well look like?</div>
+          <p class="body" style="font-size:14.5px;color:#A9B6C0;margin-top:8px">Ninety days in, what has to be true for you to feel good about the decision.</p>
+        </div>
+        <div class="job now">
+          <div class="when">Question 05</div>
+          <div class="what">Where is the biggest gap on the team right now?</div>
+          <p class="body" style="font-size:14.5px;color:#A9B6C0;margin-top:8px">You know the shape of the problem better than I do. I would rather hear where it hurts and work out together whether I am the answer.</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:34px">
+        <p>I am open to starting part time and proving it out. It is the fastest way for both of us to find out whether this works.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div class="lines">
+      <a href="mailto:AustinMichaelCannon@gmail.com">AustinMichaelCannon@gmail.com</a><br>
+      <a href="https://linkedin.com/in/austinmcannon" target="_blank" rel="noopener">linkedin.com/in/austinmcannon</a>
+    </div>
+    <div class="edu">
+      DeBary, Florida<br>
+      Seminole State College of Florida &middot; A.S. 2017<br>
+      <span style="color:#5C6C78">Built with Claude &middot; all sample data invented</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---- page switching ---- */
+  var nav = document.getElementById('nav');
+  var btns = nav.querySelectorAll('button');
+  nav.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    btns.forEach(function(x){ x.setAttribute('aria-current', x===b ? 'true' : 'false'); });
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('on'); });
+    document.getElementById(b.dataset.p).classList.add('on');
+    window.scrollTo({top:0, behavior:'auto'});
+  });
+
+  /* ---- lead scoring map ---- */
+  var data = [
+    {n:'Ridgeline Dental Partners', t:'Healthcare', s:'14 seats', x:212, y:322, p:33, z:26, d:23, w:9},
+    {n:'Marsh & Pine Law',          t:'Professional services', s:'9 seats',  x:348, y:236, p:34, z:22, d:24, w:8},
+    {n:'Halloway Auto Group',       t:'Automotive', s:'22 seats', x:492, y:268, p:29, z:28, d:16, w:5},
+    {n:'Verano Coffee Roasters',    t:'Food service', s:'6 seats', x:606, y:182, p:30, z:16, d:21, w:5},
+    {n:'Brightwater Physical Therapy', t:'Healthcare', s:'8 seats', x:418, y:178, p:22, z:20, d:16, w:7},
+    {n:'Sandhill Print Co.',        t:'Light industrial', s:'11 seats', x:272, y:196, p:19, z:22, d:14, w:6},
+    {n:'Duval Fleet Services',      t:'Logistics', s:'17 seats', x:652, y:330, p:11, z:24, d:8,  w:4},
+    {n:'Cypress Bend Storage',      t:'Self storage', s:'3 seats', x:142, y:132, p:9,  z:10, d:15, w:4}
+  ];
+  var MAX = {p:35, z:30, d:25, w:10};
+  data.forEach(function(o){ o.score = o.p + o.z + o.d + o.w; });
+
+  var g = document.getElementById('nodes');
+  var NS = 'http://www.w3.org/2000/svg';
+  var route = [[20,390],[190,352],[330,262],[470,240],[600,152],[780,118]];
+
+  function nearest(px,py){
+    var best=null, bd=Infinity;
+    for(var i=0;i<route.length-1;i++){
+      var a=route[i], b=route[i+1];
+      var dx=b[0]-a[0], dy=b[1]-a[1];
+      var t=((px-a[0])*dx+(py-a[1])*dy)/(dx*dx+dy*dy);
+      t=Math.max(0,Math.min(1,t));
+      var cx=a[0]+t*dx, cy=a[1]+t*dy;
+      var dd=(px-cx)*(px-cx)+(py-cy)*(py-cy);
+      if(dd<bd){ bd=dd; best=[cx,cy]; }
+    }
+    return best;
+  }
+
+  data.forEach(function(o,i){
+    var np = nearest(o.x,o.y);
+    var tether = document.createElementNS(NS,'line');
+    tether.setAttribute('class','tether');
+    tether.setAttribute('x1',o.x); tether.setAttribute('y1',o.y);
+    tether.setAttribute('x2',np[0]); tether.setAttribute('y2',np[1]);
+    g.appendChild(tether);
+
+    var grp = document.createElementNS(NS,'g');
+    grp.setAttribute('class','node');
+    grp.setAttribute('tabindex','0');
+    grp.setAttribute('role','button');
+    grp.setAttribute('aria-label', o.n + ', score ' + o.score);
+    grp.dataset.i = i;
+
+    var hit = document.createElementNS(NS,'circle');
+    hit.setAttribute('class','hit');
+    hit.setAttribute('cx',o.x); hit.setAttribute('cy',o.y); hit.setAttribute('r',20);
+    grp.appendChild(hit);
+
+    var c = document.createElementNS(NS,'circle');
+    c.setAttribute('class','core');
+    c.setAttribute('cx',o.x); c.setAttribute('cy',o.y); c.setAttribute('r',6);
+    if(o.score>=75){ c.setAttribute('fill','#FF6B1A'); }
+    else if(o.score>=55){ c.setAttribute('fill','#0E1419'); c.setAttribute('stroke','#FF6B1A'); c.setAttribute('stroke-width','1.6'); }
+    else { c.setAttribute('fill','#0E1419'); c.setAttribute('stroke','#4A5A66'); c.setAttribute('stroke-width','1.6'); }
+    grp.appendChild(c);
+
+    var lbl = document.createElementNS(NS,'text');
+    lbl.setAttribute('class','maplabel');
+    lbl.setAttribute('x', o.x + 12); lbl.setAttribute('y', o.y + 3.5);
+    lbl.textContent = o.score;
+    grp.appendChild(lbl);
+
+    g.appendChild(grp);
+  });
+
+  function tierText(s){
+    if(s>=75) return 'Tier A &middot; route first';
+    if(s>=55) return 'Tier B &middot; secondary pass';
+    return 'Tier C &middot; hold';
+  }
+
+  var ids = ['p','z','d','w'];
+  function select(i){
+    var o = data[i];
+    document.querySelectorAll('.node').forEach(function(n){ n.classList.remove('sel'); });
+    var el = document.querySelector('.node[data-i="'+i+'"]');
+    if(el) el.classList.add('sel');
+    document.getElementById('pname').textContent = o.n;
+    document.getElementById('pmeta').textContent = o.t + ' / ' + o.s;
+    document.getElementById('pscore').textContent = o.score;
+    document.getElementById('ptier').innerHTML = tierText(o.score);
+    ids.forEach(function(k,idx){
+      var val = o[k], max = MAX[k];
+      document.getElementById('v'+(idx+1)).textContent = val + ' / ' + max;
+      document.getElementById('b'+(idx+1)).style.width = Math.round(val/max*100) + '%';
+    });
+  }
+
+  g.addEventListener('click', function(e){
+    var n = e.target.closest('.node'); if(n) select(+n.dataset.i);
+  });
+  g.addEventListener('keydown', function(e){
+    if(e.key!=='Enter' && e.key!==' ') return;
+    var n = e.target.closest('.node'); if(n){ e.preventDefault(); select(+n.dataset.i); }
+  });
+
+  select(0);
+})();
+</script>
+</body>
+</html>
